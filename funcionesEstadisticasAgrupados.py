@@ -13,13 +13,11 @@ def mediaDA(num, fI, fAc, mC):
     media = 0
 
     for i in range(num):
-        """print(f"num valeee {num} ---- i vale {i}")"""
         valEntero = transformarStringAEntero(fI[i].get())
         media = media + (mC[i] * valEntero)
 
     media = media / fAc[num - 1]
 
-    """print(f"La media es: {media}")"""
     return round(media, 5)
 
 
