@@ -1781,6 +1781,8 @@ def run():
     #textos recuadro 3
     Label(p1, text ="Coeficiente de correlación", font = "Helvetica 16 bold").place(x=260,y=253)
 
+    #nombres
+    label(p1, text ="Desarrollado por Fernando Novillo & Edison Azogue", font = "Helvetica 7 bold").place(x=5,y=330)
 
 
     #====================================CREAR PESTAÑAS DENTRO DE DATOS NO AGRUPADOS=====================================#
