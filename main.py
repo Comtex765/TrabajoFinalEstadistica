@@ -1749,18 +1749,6 @@ def run():
     canvas.create_line(0, 250, 1800, 250, width=2)
     canvas.create_line(0, 361, 1800, 361, width=2)
 
-    #imagen datos no agrupados
-    image = Image.open("C:/Users/ferch/Documentos/fernando_deberes/espoch/3ER_SEMESTRE/Estadistica/Parcial3/TrabajoParcial3/Prueba_Interfaz/inicioTk/noAgrupados.png")
-    image = image.resize((100,130))
-    img2 = ImageTk.PhotoImage(image)
-    Label(p1, image = img2).place(x=20, y=10)
-
-    #imagen datos agrupados
-    image = Image.open("C:/Users/ferch/Documentos/fernando_deberes/espoch/3ER_SEMESTRE/Estadistica/Parcial3/TrabajoParcial3/Prueba_Interfaz/inicioTk/agrupados.png")
-    image = image.resize((100,125))
-    img = ImageTk.PhotoImage(image)
-    Label(p1, image = img).place(x=685,y=10)
-
 
 
     #textos de las medidas
@@ -1787,42 +1775,11 @@ def run():
 
 
     #textos recuadro 2
-    texto = Label(p1, text ="Distribución muestral de la medias ", font = "Helvetica 16 bold").place(x=214,y=165)
+    Label(p1, text ="Distribución muestral de la medias ", font = "Helvetica 16 bold").place(x=214,y=165)
 
-    #imagen distribucion muestral
-    image = Image.open("C:/Users/ferch/Documentos/fernando_deberes/espoch/3ER_SEMESTRE/Estadistica/Parcial3/TrabajoParcial3/Prueba_Interfaz/inicioTk/FM.png")
-    image = image.resize((100,40))
-    img3 = ImageTk.PhotoImage(image)
-    Label(p1, image = img3).place(x=40,y=200)
-
-    image = Image.open("C:/Users/ferch/Documentos/fernando_deberes/espoch/3ER_SEMESTRE/Estadistica/Parcial3/TrabajoParcial3/Prueba_Interfaz/inicioTk/FM2.png")
-    image = image.resize((76,40))
-    img4 = ImageTk.PhotoImage(image)
-    Label(p1, image = img4).place(x=350,y=200)
-
-    image = Image.open("C:/Users/ferch/Documentos/fernando_deberes/espoch/3ER_SEMESTRE/Estadistica/Parcial3/TrabajoParcial3/Prueba_Interfaz/inicioTk/FM3.png")
-    image = image.resize((215,40))
-    img5 = ImageTk.PhotoImage(image)
-    Label(p1, image = img5).place(x=550,y=200)
 
     #textos recuadro 3
-    texto = Label(p1, text ="Coeficiente de correlación", font = "Helvetica 16 bold").place(x=260,y=253)
-
-    #Imagenes coeficiente de correlación
-    image = Image.open("C:/Users/ferch/Documentos/fernando_deberes/espoch/3ER_SEMESTRE/Estadistica/Parcial3/TrabajoParcial3/Prueba_Interfaz/inicioTk/CC.png")
-    image = image.resize((160,40))
-    img6 = ImageTk.PhotoImage(image)
-    Label(p1, image = img6).place(x=310,y=300)
-
-    image = Image.open("C:/Users/ferch/Documentos/fernando_deberes/espoch/3ER_SEMESTRE/Estadistica/Parcial3/TrabajoParcial3/Prueba_Interfaz/inicioTk/CO2.png")
-    image = image.resize((100,80))
-    img7 = ImageTk.PhotoImage(image)
-    Label(p1, image = img7).place(x=660,y=260)
-
-    image = Image.open("C:/Users/ferch/Documentos/fernando_deberes/espoch/3ER_SEMESTRE/Estadistica/Parcial3/TrabajoParcial3/Prueba_Interfaz/inicioTk/CO3.png")
-    image = image.resize((100,80))
-    img8 = ImageTk.PhotoImage(image)
-    Label(p1, image = img8).place(x=40,y=260)
+    Label(p1, text ="Coeficiente de correlación", font = "Helvetica 16 bold").place(x=260,y=253)
 
 
 
