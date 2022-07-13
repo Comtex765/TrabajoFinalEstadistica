@@ -27,7 +27,7 @@ def mostrarResultadosDA(num, matriz):
             " - " + str(matriz[i][1].get())
         imprimir[i][1] = transformar(matriz[i][2].get())
         imprimir[i][2] = transformar(matriz[i][3])
-        imprimir[i][3] = transformar(matriz[i][4])
+        imprimir[i][3] = matriz[i][4]
     
     imprimir[num][0] = "TOTAL"
     imprimir[num][1] = matriz[num][2]
