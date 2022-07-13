@@ -63,7 +63,6 @@ def mediaNA(datos):
 
     media = media / len(datos)
 
-    """print(f"La media es: {media}")"""
     return round(media, 5)
 
 
@@ -92,8 +91,6 @@ def modaNA(datos):
 
     moda = mode(datos)
 
-    """print(f"La moda es: {moda}")"""
-
     return round(moda, 5)
 
 
@@ -105,8 +102,6 @@ def rangoNA(datos):
 
     rango = datos[len(datos) - 1] - datos[0]
 
-    """print(f"El rango es {rango}")"""
-
     return round(rango, 5)
 
 
@@ -117,13 +112,9 @@ def desviacionMediaNA(datos):
 
     for i in range(len(datos)):
         sumatoria += abs(datos[i] - mediaDat)
-        """print(f"sumando el {abs(datos[i] - mediaDat)}")"""
 
-    """print(f"La sumatoria es {sumatoria}")"""
 
     desviacionMedia = sumatoria / len(datos)
-
-    """print(f"La desvación media es {desviacionMedia}")"""
 
     return round(desviacionMedia, 5)
 
@@ -138,15 +129,12 @@ def varianzaNA(datos):
 
     varianza = sumatoria / len(datos)
 
-    """print(f"La varianza es {varianza}")"""
-
     return round(varianza, 5)
 
 
 def desviacionEstandarNA(datos):
     desviacionEstandar = varianzaNA(datos) ** 0.5
 
-    """print (f"La desviación estándar es {desviacionEstandar}")"""
     return round(desviacionEstandar, 5)
 
 
@@ -165,8 +153,6 @@ def sesgoNA(datos):
 
     sesgo = k * sumatoria
 
-    """print(f"El sesgo es {sesgo}")"""
-
     return round(sesgo, 5)
 
 
@@ -180,8 +166,6 @@ def curtosisNA(datos):
 
     curtosis = ((sumatoria / (len(datos))) /
                 (len(datos) * varianzaNA(datos)**4)) - 3
-
-    """print(f"La curtosis es {curtosis}")"""
 
     return round(curtosis, 5)
 
@@ -208,8 +192,6 @@ def medidaPosicionNA(datos, valor, medidaPos):
     posicion = medidaPos * (len(datos) + 1) / lim
 
     if(floor(posicion) == posicion):
-        print(f"ese floor es: {floor(posicion - 1)}")
         return round(datos[floor(posicion - 1)], 5)
     else:
-        print(f"ese floor es: {floor(posicion - 1)}")
         return round(datos[floor(posicion) - 1] + ((datos[floor(posicion)] - datos[floor(posicion) - 1]) * (posicion - floor(posicion))), 5)

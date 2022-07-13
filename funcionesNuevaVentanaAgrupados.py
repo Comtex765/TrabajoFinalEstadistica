@@ -22,7 +22,6 @@ def mostrarResultadosDA(num, matriz):
     imprimir = crearMatriz(num + 1, 4)
 
     for i in range(num):
-        """print(f"num valeee {num} --- matriz valeeeeee {len(matriz)} ---- i vale {i} ----- ")"""
 
         imprimir[i][0] = str(matriz[i][0].get()) + \
             " - " + str(matriz[i][1].get())
@@ -35,7 +34,6 @@ def mostrarResultadosDA(num, matriz):
     imprimir[num][2] = ''
     imprimir[num][3] = ''
 
-    print(f"La tabla de datos agrupados es:\n")
     return(tabulate(imprimir, headers=[
         'Intervalo', 'fi', 'Fi', 'Marca de clase'], tablefmt="grid", numalign="center", stralign="center"))
 
@@ -44,11 +42,6 @@ def unificarDA(lI, lS, fI, fAc, mC, num):
     matriz = crearMatriz(num + 1, 5)
 
     for i in range(num):
-        """print(f"num valeee {num} --- matriz valeeeeee {len(matriz)} ---- i vale {i} ----- lI vale {lI[i].get()}")
-        print(type(lI[i]))
-        print(type(lS[i]))
-        print(type(fI[i]))
-        print(type(mC[i]))"""
 
         matriz[i][0] = lI[i]
         matriz[i][1] = lS[i]

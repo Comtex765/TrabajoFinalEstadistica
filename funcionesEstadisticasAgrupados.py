@@ -46,7 +46,6 @@ def medianaDA(num, lI, lS,  fI, fAc):
         ((mitadClase - fAc[limiteInferior - 1]) /
          enteroFI[limiteInferior]) * amplitud
 
-    """print(f"La mediana es: {mediana}")"""
     return round(mediana, 5)
 
 
@@ -88,7 +87,6 @@ def modaDA(num, lI, lS, fI):
     moda = enteroLI[mayor] + (diferenciaInferior /
                               (diferenciaInferior + diferenciaSuperior)) * amplitud
 
-    """print(f"La moda es: {moda}")"""
 
     return round(moda, 5)
 
@@ -102,7 +100,6 @@ def rangoDA(num, lI, lS):
 
     rango = sup - inf
 
-    """print(f"El rango es {rango}")"""
 
     return rango
 
@@ -124,8 +121,6 @@ def desviacionMediaDA(num, lI, fI, fAc, mC):
 
     desviacionMedia = sumatoria / fAc[num - 1]
 
-    """print(f"La desvación media es {desviacionMedia}")"""
-
     return round(desviacionMedia, 5)
 
 
@@ -144,15 +139,12 @@ def varianzaDA(num, fI, fAc, mC):
 
     varianza = sumatoria / fAc[num - 1]
 
-    """print(f"La varianza es {varianza}")"""
-
     return round(varianza, 5)
 
 
 def desviacionEstandarDA(num, fI, fAc, mC):
     desviacionEstandar = varianzaDA(num, fI, fAc, mC) ** 0.5
 
-    """print (f"La desviación estándar es {desviacionEstandar}")"""
     return round(desviacionEstandar, 5)
 
 
@@ -162,8 +154,6 @@ def desviacionEstandarDA(num, fI, fAc, mC):
 def sesgoDA(num, lI, lS,  fI, fAc, mC):
     sesgo = 3 * (mediaDA(num, fI, fAc, mC) - medianaDA(num, lI,
                  lS, fI, fAc)) / varianzaDA(num, fI, fAc, mC)
-
-    """print(f"El sesgo es {sesgo}")"""
 
     return round(sesgo, 5)
 
@@ -182,22 +172,12 @@ def curtosisDA(num, fI, fAc, mC):
     curtosis = (sumatoria / ((fAc[num - 1]) *
                 desviacionEstandarDA(num, fI, fAc, mC)**4)) - 3
 
-    """print(f"La curtosis es {curtosis}")"""
 
     return round(curtosis, 5)
 
 #######################################################################################
 #------------------------------Medidas de Posicion------------------------------------#
 #######################################################################################
-
-
-"""
-    Columna 0 --> Guarda el límite inferior de la clase
-    Columna 1 --> Guarda el límite superior de la clase
-    Columna 2 --> Guarda la frecuencia de clase
-    Columna 3 --> Guarda la marca de clase
-    Columna 4 --> Guarda la frecuencia acumulada
-"""
 
 
 def medidaPosicionDA(num, lI, lS, fAc, valor, medidaPos):

@@ -14,8 +14,6 @@ def crearMatriz(filas, columnas):
 
 
 def mostrarResultadosNA(matriz):
-
-    print(f"La tabla de datos no agrupados es:\n")
     return(tabulate(matriz, headers=[
         'Valor', 'fi', 'FI', 'hI', 'HI'], tablefmt="grid", numalign="center", stralign="center"))
 

@@ -16,8 +16,6 @@ def crearMatriz(filas, columnas):
 
 
 def mostrarResultadosMuestral(matriz):
-
-    print(f"La tabla de datos no agrupados es:\n")
     return(tabulate(matriz, headers=[
         'Combinaciones', 'Media Muestral', 'Número de Medias', 'Probabilidad'], tablefmt="grid", numalign="center", stralign="center"))
 

@@ -15,7 +15,7 @@ def crearMatriz(filas, columnas):
 
 
 def mostrarResultadosCorrelacion(matriz):
-    """print(f"La tabla de datos no agrupados es:\n")"""
+    
     return(tabulate(
         matriz,
         headers=['N', 'X', 'Y', 'X - media(X)', 'Y - media(Y)', '(X - media(X))^2',

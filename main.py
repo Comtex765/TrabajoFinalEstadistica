@@ -420,22 +420,9 @@ def comprobarDatosFrecuencia(valor):
 
 
 def mostrarDatos_DatosAgrupados():
-
     mostrarBotonesDeOpciones_DatosAgrupados()
-
-    #num = transformarStringAEntero(numClases_DatosAgrupados.get())
-
     calcularFrecuenciaAcumulada()
     calcularMarcaClase()
-
-    """for i in range(0, num):
-
-        print(
-            f"En  {i + 1} --- lI_DatosAgrupados = {lI_DatosAgrupados[i].get()}",
-            f"- lS_DatosAgrupados = {lS_DatosAgrupados[i].get()}",
-            f"- fI_DatosAgrupados = {fI_DatosAgrupados[i].get()}",
-            f"- FI_DatosAgrupados = {fAc_DatosAgrupados[i]}",
-            f"- mC_DatosAgrupados = {mC_DatosAgrupados[i]}")"""
 
 
 def mostrarBotonesDeOpciones_DatosAgrupados():
@@ -540,7 +527,6 @@ def calcularFrecuenciaAcumulada():
     for i in range(1, transformarStringAEntero(numClases_DatosAgrupados.get())):
 
         anterior = fAc_DatosAgrupados[i - 1]
-        """print(type(anterior))"""
 
         actual = fI_DatosAgrupados[i].get()
         actual = int(actual)
@@ -555,7 +541,6 @@ def calcularMarcaClase():
         limI = transformarStringAEntero(lI_DatosAgrupados[i].get())
         limS = transformarStringAEntero(lS_DatosAgrupados[i].get())
         mC_DatosAgrupados.append((limI + limS) / 2)
-        """print(f"en calcularMarcaClase ---- i vale {i} ----- ")"""
 
 
 def revisarBotonesMedidas_DatosAgrupados():
@@ -602,7 +587,6 @@ def revisarBotonesMedidas_DatosAgrupados():
 
     if(boolCuartil_DatosAgrupados.get() == 1):
         posC = transformarStringAEntero(entradaCuartil_DatosAgrupados.get())
-        """print(type(posC))"""
 
         if(posC < 1 or posC > 3):
             messagebox.showerror("ERROR", "El cuartil va de 1 a 3!")
@@ -1053,12 +1037,9 @@ def tablaLista(valores, frecuencias):
             numero = transformarStringAEntero(valores[i].get())
             datosIntTabla_DatosNoAgrupados.append(numero)
 
-    """print(datosIntTabla_DatosNoAgrupados)"""
-
 
 def crearCuadrosTextoTabla_DatosAgrupados():
     num = transformarStringAEntero(numValoresTabla_DatosNoAgrupados.get())
-    """print(f"EL numero de valores es {num}")"""
 
     Label(
         frameTablaA2_DatosNoAgrupados,
@@ -1515,7 +1496,6 @@ def crearVentana_MediaMuestral():
     frameNuevaVentana.grab_set()
     frameNuevaVentana.focus_set()
     frameNuevaVentana.pack()
-    """print(f"tamanioInt_MediaMuestral{tamanioInt_MediaMuestral}")"""
 
     matriz = calcularMuestraMedia(
         datosInt_MediaMuestral, tamanioInt_MediaMuestral)
@@ -1594,9 +1574,6 @@ def comprobarDatosInicio_Correlacion():
             "ERROR", "(X) y (Y) deben tener la misma cantidad de datos")
         return
 
-    print(
-        f"largo es {len(datosInt_X_Correlacion)} {datosString_X_Correlacion}")
-
     for i in range(len(datosString_X_Correlacion)):
         if(datosString_X_Correlacion[i] == ',' and datosString_X_Correlacion[i + 1] == ','):
             messagebox.showerror("ERROR", "INGRESASTE [,] SEGUIDAS en (X)")
@@ -1660,7 +1637,6 @@ def crearVentana_Correlacion():
 
     frameNuevaVentana = Frame(ventanaNueva)
     frameNuevaVentana.pack()
-    """print(f"tamanioInt_Correlacion{tamanioInt_Correlacion}")"""
 
     matriz = calcularCorrelacion(
         datosInt_X_Correlacion, datosInt_Y_Correlacion)
@@ -1700,12 +1676,6 @@ def crearVentana_Correlacion():
         matriz[len(datosInt_X_Correlacion)][6],
         matriz[len(datosInt_X_Correlacion)][7],
         len(datosInt_X_Correlacion))
-
-
-    print(matriz[len(datosInt_X_Correlacion)][5])
-    print(matriz[len(datosInt_X_Correlacion)][6])
-    print(matriz[len(datosInt_X_Correlacion)][7])
-    print(len(datosInt_X_Correlacion))
 
     tablaResultado.insert(
         END, f"\n\nDesviación estándar de X es: {round((matriz[len(datosInt_X_Correlacion)][5] / (len(datosInt_X_Correlacion) - 1))**0.5, 5)}")
@@ -1782,7 +1752,7 @@ def run():
     Label(p1, text ="Coeficiente de correlación", font = "Helvetica 16 bold").place(x=260,y=253)
 
     #nombres
-    label(p1, text ="Desarrollado por Fernando Novillo & Edison Azogue", font = "Helvetica 7 bold").place(x=5,y=330)
+    Label(p1, text ="Desarrollado por Fernando Novillo & Edison Azogue", font = "Helvetica 7 bold").place(x=5,y=330)
 
 
     #====================================CREAR PESTAÑAS DENTRO DE DATOS NO AGRUPADOS=====================================#
