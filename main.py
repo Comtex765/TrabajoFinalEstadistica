@@ -403,7 +403,7 @@ def crearHistograma_DatosAgrupados():
     for i, valor in enumerate(frecuenciasInt):
         datos.append((valor, liInt[i], lsInt[i]))
 
-    estilo = Style(colors=['#F2AB6D']) # creamos un estilo para darle color a las barras
+    estilo = Style(colors=['#F2AB6D', '#F2AA6D']) # creamos un estilo para darle color a las barras
 
     # creamos el histograma y añadimos los datos
     histograma = Histogram(title='Histograma\nDesarrollado por Fernando Novillo & Edison Azogue',
@@ -411,7 +411,7 @@ def crearHistograma_DatosAgrupados():
                         y_title='frecuencias', 
                         style=estilo)
 
-    histograma.add('frecuencias', datos)
+    histograma.add('Intervalos', datos)
 
     histograma.render_in_browser();
 
@@ -544,7 +544,7 @@ def mostrarBotonesDeOpciones_DatosAgrupados():
     )
     
     botonSeleccionarHistograma_DatosAgrupados.grid(
-        row=5,
+        row=6,
         column=2,
         sticky="w"
     )
