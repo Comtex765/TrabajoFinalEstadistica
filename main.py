@@ -1,7 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
-from PIL import ImageTk,Image
 from tkinter.ttk import Notebook
+from pygal import Histogram
+from pygal.style import Style
 
 from funcionesEstadisticasAgrupados import *
 from funcionesNuevaVentanaAgrupados import *
@@ -54,6 +55,7 @@ global boolCurtosis_DatosAgrupados
 global boolCuartil_DatosAgrupados
 global boolDecil_DatosAgrupados
 global boolPercentil_DatosAgrupados
+global boolHistograma_DatosAgrupados
 
 inicioLI_DatosAgrupados = StringVar()
 iniciolS_DatosAgrupados = StringVar()
@@ -77,6 +79,7 @@ boolCurtosis_DatosAgrupados = IntVar()
 boolCuartil_DatosAgrupados = IntVar()
 boolDecil_DatosAgrupados = IntVar()
 boolPercentil_DatosAgrupados = IntVar()
+boolHistograma_DatosAgrupados = IntVar()
 
 lI_DatosAgrupados = []
 lS_DatosAgrupados = []
@@ -252,13 +255,10 @@ def comprobarDatosInicio_DatosAgrupados(inf, sup):
     else:
         try:
             inf = transformarStringAEntero(inicioLI_DatosAgrupados.get())
-            inf = int(inf)
 
             sup = transformarStringAEntero(iniciolS_DatosAgrupados.get())
-            sup = int(sup)
 
             clases = transformarStringAEntero(numClases_DatosAgrupados.get())
-            clases = int(clases)
 
             if(clases > 15):
                 messagebox.showerror(
@@ -276,12 +276,12 @@ def comprobarDatosInicio_DatosAgrupados(inf, sup):
                 messagebox.showerror(
                     "ERROR", "El número de clases no puede ser 0 o menor")
             else:
-                crearCuadrosTexto_DatosAgrupados(inf, sup)
+                crearCuadrosTexto_DatosAgrupados()
         except TypeError:
             pass
 
 
-def crearCuadrosTexto_DatosAgrupados(primerlI, primerlS):
+def crearCuadrosTexto_DatosAgrupados():
     num = transformarStringAEntero(numClases_DatosAgrupados.get())
 
     Label(
@@ -383,6 +383,37 @@ def crearCuadrosTexto_DatosAgrupados(primerlI, primerlS):
     )
 
     botonConfirmarCalculos_DatosAgrupados.grid_forget()
+
+
+def crearHistograma_DatosAgrupados():
+    frecuenciasInt = []
+    liInt = []
+    lsInt = []
+
+    for i in range(len(fI_DatosAgrupados)):
+        frecuenciasInt.append(transformarStringAEntero(fI_DatosAgrupados[i].get()))
+        liInt.append(transformarStringAEntero(lI_DatosAgrupados[i].get()))
+        lsInt.append(transformarStringAEntero(lS_DatosAgrupados[i].get()))
+
+    print(frecuenciasInt)
+
+    datos = []
+
+    # generamos la lista de tuplas con la información de cada intervalo
+    for i, valor in enumerate(frecuenciasInt):
+        datos.append((valor, liInt[i], lsInt[i]))
+
+    estilo = Style(colors=['#F2AB6D']) # creamos un estilo para darle color a las barras
+
+    # creamos el histograma y añadimos los datos
+    histograma = Histogram(title='Histograma\nDesarrollado por Fernando Novillo & Edison Azogue',
+                        x_title='intervalos', 
+                        y_title='frecuencias', 
+                        style=estilo)
+
+    histograma.add('frecuencias', datos)
+
+    histograma.render_in_browser();
 
 
 def calcularLimiteSuperior(inferior):
@@ -511,6 +542,12 @@ def mostrarBotonesDeOpciones_DatosAgrupados():
         column=4,
         sticky="w"
     )
+    
+    botonSeleccionarHistograma_DatosAgrupados.grid(
+        row=5,
+        column=2,
+        sticky="w"
+    )
 
     botonConfirmarCalculos_DatosAgrupados.grid(
         row=transformarStringAEntero(numClases_DatosAgrupados.get()) + 4,
@@ -614,6 +651,11 @@ def revisarBotonesMedidas_DatosAgrupados():
         else:
             texto_extra += f"\n-> El {posP} percentil es {medidaPosicionDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fAc_DatosAgrupados, 3, posP)}"
             check = True
+    
+    if(boolHistograma_DatosAgrupados.get() == 1):
+        texto_extra += "\n-> El Histograma se encuentra en su navegador web"
+        crearHistograma_DatosAgrupados()
+        check = True
 
     if(check == True):
         crearVentana_DatosAgrupados(texto_extra)
@@ -1745,11 +1787,11 @@ def run():
 
 
     #textos recuadro 2
-    Label(p1, text ="Distribución muestral de la medias ", font = "Helvetica 16 bold").place(x=214,y=165)
+    Label(p1, text ="Distribución Muestral de la Media ", font = "Helvetica 16 bold").place(x=214,y=165)
 
 
     #textos recuadro 3
-    Label(p1, text ="Coeficiente de correlación", font = "Helvetica 16 bold").place(x=260,y=253)
+    Label(p1, text ="Coeficiente de Correlación", font = "Helvetica 16 bold").place(x=260,y=253)
 
     #nombres
     Label(p1, text ="Desarrollado por Fernando Novillo & Edison Azogue", font = "Helvetica 7 bold").place(x=5,y=330)
@@ -2583,6 +2625,16 @@ def run():
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoPercentil_DatosAgrupados()
     )
+
+    global botonSeleccionarHistograma_DatosAgrupados
+    botonSeleccionarHistograma_DatosAgrupados = Checkbutton(
+        frameTabla_DatosAgrupados,
+        text="Histograma",
+        variable= boolHistograma_DatosAgrupados,
+        cursor="heart",
+        font=("Kristen ITC", 9)
+    )
+
 
     #=======================================CICLO INFINITO==================================#
 
