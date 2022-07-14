@@ -1,8 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter.ttk import Notebook
-from pygal import Histogram
-from pygal.style import Style
 
 from funcionesEstadisticasAgrupados import *
 from funcionesNuevaVentanaAgrupados import *
@@ -55,7 +53,6 @@ global boolCurtosis_DatosAgrupados
 global boolCuartil_DatosAgrupados
 global boolDecil_DatosAgrupados
 global boolPercentil_DatosAgrupados
-global boolHistograma_DatosAgrupados
 
 inicioLI_DatosAgrupados = StringVar()
 iniciolS_DatosAgrupados = StringVar()
@@ -79,7 +76,6 @@ boolCurtosis_DatosAgrupados = IntVar()
 boolCuartil_DatosAgrupados = IntVar()
 boolDecil_DatosAgrupados = IntVar()
 boolPercentil_DatosAgrupados = IntVar()
-boolHistograma_DatosAgrupados = IntVar()
 
 lI_DatosAgrupados = []
 lS_DatosAgrupados = []
@@ -385,37 +381,6 @@ def crearCuadrosTexto_DatosAgrupados():
     botonConfirmarCalculos_DatosAgrupados.grid_forget()
 
 
-def crearHistograma_DatosAgrupados():
-    frecuenciasInt = []
-    liInt = []
-    lsInt = []
-
-    for i in range(len(fI_DatosAgrupados)):
-        frecuenciasInt.append(transformarStringAEntero(fI_DatosAgrupados[i].get()))
-        liInt.append(transformarStringAEntero(lI_DatosAgrupados[i].get()))
-        lsInt.append(transformarStringAEntero(lS_DatosAgrupados[i].get()))
-
-    print(frecuenciasInt)
-
-    datos = []
-
-    # generamos la lista de tuplas con la información de cada intervalo
-    for i, valor in enumerate(frecuenciasInt):
-        datos.append((valor, liInt[i], lsInt[i]))
-
-    estilo = Style(colors=['#F2AB6D', '#F2AA6D']) # creamos un estilo para darle color a las barras
-
-    # creamos el histograma y añadimos los datos
-    histograma = Histogram(title='Histograma\nDesarrollado por Fernando Novillo & Edison Azogue',
-                        x_title='intervalos', 
-                        y_title='frecuencias', 
-                        style=estilo)
-
-    histograma.add('Intervalos', datos)
-
-    histograma.render_in_browser();
-
-
 def calcularLimiteSuperior(inferior):
     rango = transformarStringAEntero(
         iniciolS_DatosAgrupados.get()) - transformarStringAEntero(inicioLI_DatosAgrupados.get())
@@ -542,12 +507,6 @@ def mostrarBotonesDeOpciones_DatosAgrupados():
         column=4,
         sticky="w"
     )
-    
-    botonSeleccionarHistograma_DatosAgrupados.grid(
-        row=6,
-        column=2,
-        sticky="w"
-    )
 
     botonConfirmarCalculos_DatosAgrupados.grid(
         row=transformarStringAEntero(numClases_DatosAgrupados.get()) + 4,
@@ -651,11 +610,6 @@ def revisarBotonesMedidas_DatosAgrupados():
         else:
             texto_extra += f"\n-> El {posP} percentil es {medidaPosicionDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fAc_DatosAgrupados, 3, posP)}"
             check = True
-    
-    if(boolHistograma_DatosAgrupados.get() == 1):
-        texto_extra += "\n-> El Histograma se encuentra en su navegador web"
-        crearHistograma_DatosAgrupados()
-        check = True
 
     if(check == True):
         crearVentana_DatosAgrupados(texto_extra)
@@ -717,6 +671,10 @@ def crearVentana_DatosAgrupados(texto):
     ventanaNueva.title("Tabla de Frecuencias")
 
     frameNuevaVentana = Frame(ventanaNueva)
+
+    frameNuevaVentana.grab_set()
+    frameNuevaVentana.focus_set()
+
     frameNuevaVentana.pack()
 
     matriz = unificarDA(lI_DatosAgrupados, lS_DatosAgrupados,
@@ -1022,8 +980,10 @@ def crearVentanaEnlistados_DatosNoAgrupados(texto):
     ventanaNueva = Toplevel()
 
     frameNuevaVentana = Frame(ventanaNueva)
+
     frameNuevaVentana.grab_set()
     frameNuevaVentana.focus_set()
+
     frameNuevaVentana.pack()
 
     matriz = unificarNA(datosIntEnlistados_DatosNoAgrupados)
@@ -1434,8 +1394,10 @@ def crearVentanaTabla_DatosNoAgrupados(texto):
     ventanaNueva = Toplevel()
 
     frameNuevaVentana = Frame(ventanaNueva)
+
     frameNuevaVentana.grab_set()
     frameNuevaVentana.focus_set()
+
     frameNuevaVentana.pack()
 
     matriz = unificarNA(datosIntTabla_DatosNoAgrupados)
@@ -1533,10 +1495,10 @@ def crearVentana_MediaMuestral():
     ventanaNueva = Toplevel()
 
     frameNuevaVentana = Frame(ventanaNueva)
+
     frameNuevaVentana.grab_set()
     frameNuevaVentana.focus_set()
-    frameNuevaVentana.grab_set()
-    frameNuevaVentana.focus_set()
+
     frameNuevaVentana.pack()
 
     matriz = calcularMuestraMedia(
@@ -1678,6 +1640,10 @@ def crearVentana_Correlacion():
     ventanaNueva = Toplevel()
 
     frameNuevaVentana = Frame(ventanaNueva)
+
+    frameNuevaVentana.grab_set()
+    frameNuevaVentana.focus_set()
+
     frameNuevaVentana.pack()
 
     matriz = calcularCorrelacion(
@@ -2625,16 +2591,6 @@ def run():
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoPercentil_DatosAgrupados()
     )
-
-    global botonSeleccionarHistograma_DatosAgrupados
-    botonSeleccionarHistograma_DatosAgrupados = Checkbutton(
-        frameTabla_DatosAgrupados,
-        text="Histograma",
-        variable= boolHistograma_DatosAgrupados,
-        cursor="heart",
-        font=("Kristen ITC", 9)
-    )
-
 
     #=======================================CICLO INFINITO==================================#
 
