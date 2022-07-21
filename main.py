@@ -234,10 +234,10 @@ def transformarStringAEntero(valor):
     except ValueError:
         try:
             float(valor)
-            messagebox.showinfo("FUNCIONALIDAD NO IMPLEMENTADA",
-                                "Aún no se han implementado las clases con flotantes :(")
+            messagebox.showinfo("FUNCTIONALITY NOT IMPLEMENTED",
+                                "Classes with floats have not been implemented yet :(")
         except ValueError:
-            messagebox.showerror("ERROR", "Debes ingresar números")
+            messagebox.showerror("ERROR", "You must enter numbers")
         else:
             return
     else:
@@ -247,7 +247,7 @@ def transformarStringAEntero(valor):
 def comprobarDatosInicio_DatosAgrupados(inf, sup):
     if(inf == "" or sup == "" or numClases_DatosAgrupados.get() == ""):
         messagebox.showerror(
-            "ERROR", "Debes ingresar los 3 datos para continuar")
+            "ERROR", "You must enter the 3 data to continuer")
     else:
         try:
             inf = transformarStringAEntero(inicioLI_DatosAgrupados.get())
@@ -258,19 +258,19 @@ def comprobarDatosInicio_DatosAgrupados(inf, sup):
 
             if(clases > 15):
                 messagebox.showerror(
-                    "ERROR", "El número máximo de clases es 15")
+                    "ERROR", "The maximum number of classes is 15")
             elif(inf > sup):
                 messagebox.showerror(
-                    "ERROR", "El límite inferior no puede ser mayor que el superior")
+                    "ERROR", "The lower bound cannot be greater than the upper bound.")
             elif(inf == sup):
                 messagebox.showerror(
-                    "ERROR", "Los límites no pueden ser iguales")
-            elif(inf < 0):
+                    "ERROR", "Limits cannot be equal")
+            elif inf < 0:
                 messagebox.showerror(
-                    "ERROR", "Los límites no pueden ser negativos")
-            elif(clases <= 0):
+                    "ERROR", "Limits cannot be negative")
+            elif clases <= 0:
                 messagebox.showerror(
-                    "ERROR", "El número de clases no puede ser 0 o menor")
+                    "ERROR", "The number of classes cannot be 0 or less")
             else:
                 crearCuadrosTexto_DatosAgrupados()
         except TypeError:
@@ -282,7 +282,7 @@ def crearCuadrosTexto_DatosAgrupados():
 
     Label(
         frameTabla_DatosAgrupados,
-        text="Intervalo",
+        text="Class Interval",
         width=20,
         pady=10,
         font=("Kristen ITC", 11)
@@ -295,7 +295,7 @@ def crearCuadrosTexto_DatosAgrupados():
 
     Label(
         frameTabla_DatosAgrupados,
-        text="Frecuencia Absoluta",
+        text="Absolute Freuency",
         width=21,
         pady=10,
         font=("Kristen ITC", 11)
@@ -396,7 +396,7 @@ def comprobarDatosFrecuencia(valor):
 
     for i in range(transformarStringAEntero(numClases_DatosAgrupados.get())):
         if(fI_DatosAgrupados[i].get() == ""):
-            messagebox.showerror("ERROR", "No debes dejar espacios vacíos")
+            messagebox.showerror("ERROR", "You must not leave empty spaces")
             return
 
     try:
@@ -404,10 +404,10 @@ def comprobarDatosFrecuencia(valor):
             a = int(fI_DatosAgrupados[i].get())
         if (a <= 0):
             messagebox.showerror(
-                "ERROR", "La frecuencia no puede ser 0 o menor")
+                "ERROR", "Frequency cannot be 0 or less")
             return
     except ValueError:
-        messagebox.showerror("ERROR", "Debes ingresar números")
+        messagebox.showerror("ERROR", "You must enter numbers")
     else:
         if (valor == 1):
             mostrarDatos_DatosAgrupados()
@@ -424,8 +424,8 @@ def mostrarDatos_DatosAgrupados():
 def mostrarBotonesDeOpciones_DatosAgrupados():
     Label(
         frameTabla_DatosAgrupados,
-        text="Calcular",
-        width=20,
+        text="Select the measures you want to be calculated",
+        width=45,
         pady=10,
         font=("Kristen ITC", 11)
     ).grid(
@@ -546,76 +546,76 @@ def revisarBotonesMedidas_DatosAgrupados():
     check = False
 
     if(boolMedia_DatosAgrupados.get() == 1):
-        texto_extra += f"\n-> La media es: {mediaDA(num, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
+        texto_extra += f"\n-> The mean is: {mediaDA(num, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
         check = True
 
     if(boolMediana_DatosAgrupados.get() == 1):
-        texto_extra += f"\n-> La mediana es: {medianaDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fI_DatosAgrupados, fAc_DatosAgrupados)}"
+        texto_extra += f"\n-> The median is: {medianaDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fI_DatosAgrupados, fAc_DatosAgrupados)}"
         check = True
 
     if(boolModa_DatosAgrupados.get() == 1):
-        texto_extra += f"\n-> La moda es: {modaDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fI_DatosAgrupados)}"
+        texto_extra += f"\n-> The mode is: {modaDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fI_DatosAgrupados)}"
         check = True
 
     if(boolRango_DatosAgrupados.get() == 1):
-        texto_extra += f"\n-> El rango es: {rangoDA(num, lI_DatosAgrupados, lS_DatosAgrupados)}"
+        texto_extra += f"\n-> The range is: {rangoDA(num, lI_DatosAgrupados, lS_DatosAgrupados)}"
         check = True
 
     if(boolDesviacionMedia_DatosAgrupados.get() == 1):
-        texto_extra += f"\n-> La desviación media es: {desviacionMediaDA(num, lI_DatosAgrupados, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
+        texto_extra += f"\n-> The mean deviation is: {desviacionMediaDA(num, lI_DatosAgrupados, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
         check = True
 
     if(boolVarianza_DatosAgrupados.get() == 1):
-        texto_extra += f"\n-> La varianza es: {varianzaDA(num, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
+        texto_extra += f"\n-> The variance is: {varianzaDA(num, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
         check = True
 
     if(boolDesviacionEstandar_DatosAgrupados.get() == 1):
-        texto_extra += f"\n-> La desviación estándar es: {desviacionEstandarDA(num, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
+        texto_extra += f"\n-> The standard deviation is: {desviacionEstandarDA(num, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
         check = True
 
     if(boolSesgo_DatosAgrupados.get() == 1):
-        texto_extra += f"\n-> El sesgo es: {sesgoDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
+        texto_extra += f"\n-> The bias is: {sesgoDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
         check = True
 
     if(boolCurtosis_DatosAgrupados.get() == 1):
-        texto_extra += f"\n-> La curtosis es: {curtosisDA(num, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
+        texto_extra += f"\n-> The kurtosis is: {curtosisDA(num, fI_DatosAgrupados, fAc_DatosAgrupados, mC_DatosAgrupados)}"
         check = True
 
     if(boolCuartil_DatosAgrupados.get() == 1):
         posC = transformarStringAEntero(entradaCuartil_DatosAgrupados.get())
 
         if(posC < 1 or posC > 3):
-            messagebox.showerror("ERROR", "El cuartil va de 1 a 3!")
+            messagebox.showerror("ERROR", "The quartile goes from 1 to 3!")
             check = False
         else:
-            texto_extra += f"\n-> El {posC} cuartil es {medidaPosicionDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fAc_DatosAgrupados, 1, posC)}"
+            texto_extra += f"\n-> The {posC}th quartile is {medidaPosicionDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fAc_DatosAgrupados, 1, posC)}"
             check = True
 
     if(boolDecil_DatosAgrupados.get() == 1):
         posD = transformarStringAEntero(entradaDecil_DatosAgrupados.get())
 
         if(posD < 1 or posD > 9):
-            messagebox.showerror("ERROR", "El decil va de 1 a 9!")
+            messagebox.showerror("ERROR", "The quartile goes from 1 to 3!")
             check = False
         else:
-            texto_extra += f"\n-> El {posD} decil es {medidaPosicionDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fAc_DatosAgrupados, 2, posD)}"
+            texto_extra += f"\n-> The {posD}th decile is {medidaPosicionDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fAc_DatosAgrupados, 2, posD)}"
             check = True
 
     if(boolPercentil_DatosAgrupados.get() == 1):
         posP = transformarStringAEntero(entradaPercentil_DatosAgrupados.get())
 
         if(posP < 1 or posP > 99):
-            messagebox.showerror("ERROR", "El Percentil va de 1 a 99!")
+            messagebox.showerror("ERROR", "The percentile goes from 1 to 99!")
             check = False
         else:
-            texto_extra += f"\n-> El {posP} percentil es {medidaPosicionDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fAc_DatosAgrupados, 3, posP)}"
+            texto_extra += f"\n-> The {posP}th percentile is {medidaPosicionDA(num, lI_DatosAgrupados, lS_DatosAgrupados, fAc_DatosAgrupados, 3, posP)}"
             check = True
 
     if(check == True):
         crearVentana_DatosAgrupados(texto_extra)
     else:
         if(boolCuartil_DatosAgrupados.get() == 0 and boolPercentil_DatosAgrupados.get() == 0 and boolPercentil_DatosAgrupados.get() == 0):
-            messagebox.showerror("ERROR", "Selecciona al menos una medida")
+            messagebox.showerror("ERROR", "Select at least one measure")
 
 
 def mostrarCuadroTextoCuartil_DatosAgrupados():
@@ -712,7 +712,7 @@ def crearVentana_DatosAgrupados(texto):
     )
 
     tablaResultado.insert(
-        END, "\n\n(: Desarrollado con amor por Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
+        END, "\n\n(: Developed with love by Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
 
     tablaResultado.config(yscrollcommand=scrollVert.set, state="disabled")
 
@@ -722,9 +722,13 @@ def comprobarDatosInicioEnlistados_DatosNoAgrupados():
     datosStringEnlistados_DatosNoAgrupados = entradaDatosEnlistados_DatosNoAgrupados.get(
         1.0, 'end')
 
+    if(len(datosStringEnlistados_DatosNoAgrupados) == 1):
+        messagebox.showerror("ERROR", "You must not leave the field empty")
+        return
+
     for i in range(len(datosStringEnlistados_DatosNoAgrupados)):
         if(datosStringEnlistados_DatosNoAgrupados[i] == ',' and datosStringEnlistados_DatosNoAgrupados[i + 1] == ','):
-            messagebox.showerror("ERROR", "INGRESASTE [,] SEGUIDAS")
+            messagebox.showerror("ERROR", "You entered [,] in a row")
             return
 
     j = 0
@@ -743,7 +747,7 @@ def comprobarDatosInicioEnlistados_DatosNoAgrupados():
                 entero = int(numero)
                 datosIntEnlistados_DatosNoAgrupados.append(entero)
             except ValueError:
-                messagebox.showerror("ERROR", "DEBES INGRESAR NUMEROS")
+                messagebox.showerror("ERROR", "You must enter numbers")
                 j = len(datosStringEnlistados_DatosNoAgrupados)
                 return
 
@@ -757,8 +761,8 @@ def comprobarDatosInicioEnlistados_DatosNoAgrupados():
 def mostrarBotonesDeOpcionesEnlistados_DatosNoAgrupados():
     Label(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Calcular",
-        width=20,
+        text="Select the measures you want to be calculated",
+        width=45,
         pady=10,
         font=("Kristen ITC", 11)
     ).grid(
@@ -855,39 +859,39 @@ def revisarBotonesMedidasEnlistados_DatosNoAgrupados():
     check = False
 
     if(boolMediaEnlistados_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La media es: {mediaNA(datosIntEnlistados_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The mean is: {mediaNA(datosIntEnlistados_DatosNoAgrupados)}"
         check = True
 
     if(boolMedianaEnlistados_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La mediana es {medianaNA(datosIntEnlistados_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The median is: {medianaNA(datosIntEnlistados_DatosNoAgrupados)}"
         check = True
 
     if(boolModaEnlistados_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La moda es: {modaNA(datosIntEnlistados_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The mode is: {modaNA(datosIntEnlistados_DatosNoAgrupados)}"
         check = True
 
     if(boolRangoEnlistados_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> El rango es: {rangoNA(datosIntEnlistados_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The range is: {rangoNA(datosIntEnlistados_DatosNoAgrupados)}"
         check = True
 
     if(boolDesviacionMediaEnlistados_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La desviación media es: {desviacionMediaNA(datosIntEnlistados_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The mean deviation is: {desviacionMediaNA(datosIntEnlistados_DatosNoAgrupados)}"
         check = True
 
     if(boolVarianzaEnlistados_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La varianza es: {varianzaNA(datosIntEnlistados_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The variance is: {varianzaNA(datosIntEnlistados_DatosNoAgrupados)}"
         check = True
 
     if(boolDesviacionEstandarEnlistados_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La desviación estándar es: {desviacionEstandarNA(datosIntEnlistados_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The standard deviation is: {desviacionEstandarNA(datosIntEnlistados_DatosNoAgrupados)}"
         check = True
 
     if(boolSesgoEnlistados_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> El sesgo es: {sesgoNA(datosIntEnlistados_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The bias is: {sesgoNA(datosIntEnlistados_DatosNoAgrupados)}"
         check = True
 
     if(boolCurtosisEnlistados_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La curtosis es: {curtosisNA(datosIntEnlistados_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The kurtosis is: {curtosisNA(datosIntEnlistados_DatosNoAgrupados)}"
         check = True
 
     if(boolCuartilEnlistados_DatosNoAgrupados.get() == 1):
@@ -895,10 +899,10 @@ def revisarBotonesMedidasEnlistados_DatosNoAgrupados():
             entradaCuartilEnlistados_DatosNoAgrupados.get())
 
         if(posC < 1 or posC > 3):
-            messagebox.showerror("ERROR", "El cuartil va de 1 a 3!")
+            messagebox.showerror("ERROR", "The quartile goes from 1 to 3!")
             check = False
         else:
-            texto_extra += f"\n-> El {posC} cuartil es {medidaPosicionNA(datosIntEnlistados_DatosNoAgrupados, 1, posC)}"
+            texto_extra += f"\n-> The {posC}th quartile is {medidaPosicionNA(datosIntEnlistados_DatosNoAgrupados, 1, posC)}"
             check = True
 
     if(boolDecilEnlistados_DatosNoAgrupados.get() == 1):
@@ -906,10 +910,10 @@ def revisarBotonesMedidasEnlistados_DatosNoAgrupados():
             entradaDecilEnlistados_DatosNoAgrupados.get())
 
         if(posD < 1 or posD > 9):
-            messagebox.showerror("ERROR", "El decil va de 1 a 9!")
+            messagebox.showerror("ERROR", "The decile goes from 1 to 9!")
             check = False
         else:
-            texto_extra += f"\n-> El {posD} decil es {medidaPosicionNA(datosIntEnlistados_DatosNoAgrupados,2, posD)}"
+            texto_extra += f"\n-> The {posD}th decile is {medidaPosicionNA(datosIntEnlistados_DatosNoAgrupados,2, posD)}"
             check = True
 
     if(boolPercentilEnlistados_DatosNoAgrupados.get() == 1):
@@ -917,17 +921,17 @@ def revisarBotonesMedidasEnlistados_DatosNoAgrupados():
             entradaPercentilEnlistados_DatosNoAgrupados.get())
 
         if(posP < 1 or posP > 99):
-            messagebox.showerror("ERROR", "El Percentil va de 1 a 99!")
+            messagebox.showerror("ERROR", "The percentile goes from 1 to 99!")
             check = False
         else:
-            texto_extra += f"\n-> El {posP} percentil es {medidaPosicionNA(datosIntEnlistados_DatosNoAgrupados, 3, posP)}"
+            texto_extra += f"\n-> The {posP}th percentile is {medidaPosicionNA(datosIntEnlistados_DatosNoAgrupados, 3, posP)}"
             check = True
 
     if(check == True):
         crearVentanaEnlistados_DatosNoAgrupados(texto_extra)
     else:
         if(boolCuartilEnlistados_DatosNoAgrupados.get() == 0 and boolPercentilEnlistados_DatosNoAgrupados.get() == 0 and boolPercentilEnlistados_DatosNoAgrupados.get() == 0):
-            messagebox.showerror("ERROR", "Selecciona al menos una medida")
+            messagebox.showerror("ERROR", "Select at least one measure")
 
 
 def mostrarCuadroTextoCuartilEnlistados_DatosNoAgrupados():
@@ -1020,7 +1024,7 @@ def crearVentanaEnlistados_DatosNoAgrupados(texto):
     )
 
     tablaResultado.insert(
-        END, "\n\n(: Desarrollado con amor por Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
+        END, "\n\n(: Developed with love by Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
 
     tablaResultado.config(
         yscrollcommand=scrollVert.set, state="disabled")
@@ -1045,7 +1049,7 @@ def crearCuadrosTextoTabla_DatosAgrupados():
 
     Label(
         frameTablaA2_DatosNoAgrupados,
-        text="Valor",
+        text="Value",
         width=10,
         pady=10,
         font=("Kristen ITC", 11)
@@ -1059,7 +1063,7 @@ def crearCuadrosTextoTabla_DatosAgrupados():
 
     Label(
         frameTablaA2_DatosNoAgrupados,
-        text="Frecuencia\nAbsoluta",
+        text="Absolute\nFreuency",
         width=10,
         pady=10,
         font=("Kristen ITC", 11)
@@ -1146,10 +1150,10 @@ def comprobarDatosInicioTabla_DatosNoAgrupados():
 
         if(valores > 15):
             messagebox.showerror(
-                "ERROR", "El número máximo de valores es 15")
+                "ERROR", "The maximum number of values is 15")
         elif(valores <= 0):
             messagebox.showerror(
-                "ERROR", "El número de valores no puede ser 0 o menor")
+                "ERROR", "The number of values cannot be 0 or less")
         else:
             crearCuadrosTextoTabla_DatosAgrupados()
     except TypeError:
@@ -1159,10 +1163,11 @@ def comprobarDatosInicioTabla_DatosNoAgrupados():
 def comprobarDatosTabla_DatosNoAgrupados():
     for i in range(transformarStringAEntero(numValoresTabla_DatosNoAgrupados.get())):
         if(fITabla_DatosNoAgrupados[i].get() == ""):
-            messagebox.showerror("ERROR", "No debes dejar frecuencias vacías")
+            messagebox.showerror(
+                "ERROR", "You must not leave empty frequencies")
             return
         elif(valoresTabla_DatosNoAgrupados[i].get() == ""):
-            messagebox.showerror("ERROR", "No debes dejar valores vacíos")
+            messagebox.showerror("ERROR", "You must not leave empty values")
             return
     tablaLista(valoresTabla_DatosNoAgrupados, fITabla_DatosNoAgrupados)
     mostrarBotonesDeOpcionesTabla_DatosNoAgrupados()
@@ -1171,8 +1176,8 @@ def comprobarDatosTabla_DatosNoAgrupados():
 def mostrarBotonesDeOpcionesTabla_DatosNoAgrupados():
     Label(
         frameTablaA2_DatosNoAgrupados,
-        text="Calcular",
-        width=20,
+        text="Select the measures you want to be calculated",
+        width=45,
         pady=10,
         font=("Kristen ITC", 11)
     ).grid(
@@ -1269,39 +1274,39 @@ def revisarBotonesMedidasTabla_DatosNoAgrupados():
     check = False
 
     if(boolMediaTabla_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La media es: {mediaNA(datosIntTabla_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The mean is: {mediaNA(datosIntTabla_DatosNoAgrupados)}"
         check = True
 
     if(boolMedianaTabla_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La mediana es {medianaNA(datosIntTabla_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The median is: {medianaNA(datosIntTabla_DatosNoAgrupados)}"
         check = True
 
     if(boolModaTabla_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La moda es: {modaNA(datosIntTabla_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The mode is: {modaNA(datosIntTabla_DatosNoAgrupados)}"
         check = True
 
     if(boolRangoTabla_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> El rango es: {rangoNA(datosIntTabla_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The range is: {rangoNA(datosIntTabla_DatosNoAgrupados)}"
         check = True
 
     if(boolDesviacionMediaTabla_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La desviación media es: {desviacionMediaNA(datosIntTabla_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The mean deviation is: {desviacionMediaNA(datosIntTabla_DatosNoAgrupados)}"
         check = True
 
     if(boolVarianzaTabla_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La varianza es: {varianzaNA(datosIntTabla_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The variance is: {varianzaNA(datosIntTabla_DatosNoAgrupados)}"
         check = True
 
     if(boolDesviacionEstandarTabla_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La desviación estándar es: {desviacionEstandarNA(datosIntTabla_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The standard deviation is: {desviacionEstandarNA(datosIntTabla_DatosNoAgrupados)}"
         check = True
 
     if(boolSesgoTabla_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> El sesgo es: {sesgoNA(datosIntTabla_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The bias is: {sesgoNA(datosIntTabla_DatosNoAgrupados)}"
         check = True
 
     if(boolCurtosisTabla_DatosNoAgrupados.get() == 1):
-        texto_extra += f"\n-> La curtosis es: {curtosisNA(datosIntTabla_DatosNoAgrupados)}"
+        texto_extra += f"\n-> The kurtosis is: {curtosisNA(datosIntTabla_DatosNoAgrupados)}"
         check = True
 
     if(boolCuartilTabla_DatosNoAgrupados.get() == 1):
@@ -1309,10 +1314,10 @@ def revisarBotonesMedidasTabla_DatosNoAgrupados():
             entradaCuartilTabla_DatosNoAgrupados.get())
 
         if(posC < 1 or posC > 3):
-            messagebox.showerror("ERROR", "El cuartil va de 1 a 3!")
+            messagebox.showerror("ERROR", "The quartile goes from 1 to 3!")
             check = False
         else:
-            texto_extra += f"\n-> El {posC} cuartil es {medidaPosicionNA(datosIntTabla_DatosNoAgrupados, 1, posC)}"
+            texto_extra += f"\n-> The {posC}th quartile is {medidaPosicionNA(datosIntTabla_DatosNoAgrupados, 1, posC)}"
             check = True
 
     if(boolDecilTabla_DatosNoAgrupados.get() == 1):
@@ -1320,10 +1325,10 @@ def revisarBotonesMedidasTabla_DatosNoAgrupados():
             entradaDecilTabla_DatosNoAgrupados.get())
 
         if(posD < 1 or posD > 9):
-            messagebox.showerror("ERROR", "El decil va de 1 a 9!")
+            messagebox.showerror("ERROR", "The quartile goes from 1 to 3!")
             check = False
         else:
-            texto_extra += f"\n-> El {posD} decil es {medidaPosicionNA(datosIntTabla_DatosNoAgrupados,2, posD)}"
+            texto_extra += f"\n-> The {posD}th decile is {medidaPosicionNA(datosIntTabla_DatosNoAgrupados,2, posD)}"
             check = True
 
     if(boolPercentilTabla_DatosNoAgrupados.get() == 1):
@@ -1331,17 +1336,17 @@ def revisarBotonesMedidasTabla_DatosNoAgrupados():
             entradaPercentilTabla_DatosNoAgrupados.get())
 
         if(posP < 1 or posP > 99):
-            messagebox.showerror("ERROR", "El Percentil va de 1 a 99!")
+            messagebox.showerror("ERROR", "The percentile goes from 1 to 99!")
             check = False
         else:
-            texto_extra += f"\n-> El {posP} percentil es {medidaPosicionNA(datosIntTabla_DatosNoAgrupados, 3, posP)}"
+            texto_extra += f"\n-> The {posP}th percentile is {medidaPosicionNA(datosIntTabla_DatosNoAgrupados, 3, posP)}"
             check = True
 
     if(check == True):
         crearVentanaTabla_DatosNoAgrupados(texto_extra)
     else:
         if(boolCuartilTabla_DatosNoAgrupados.get() == 0 and boolPercentilTabla_DatosNoAgrupados.get() == 0 and boolPercentilTabla_DatosNoAgrupados.get() == 0):
-            messagebox.showerror("ERROR", "Selecciona al menos una medida")
+            messagebox.showerror("ERROR", "Select at least one measure")
 
 
 def mostrarCuadroTextoCuartilTabla_DatosNoAgrupados():
@@ -1433,7 +1438,7 @@ def crearVentanaTabla_DatosNoAgrupados(texto):
     )
 
     tablaResultado.insert(
-        END, "\n\n(: Desarrollado con amor por Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
+        END, "\n\n(: Developed with love by Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
 
     tablaResultado.config(yscrollcommand=scrollVert.set, state="disabled")
 
@@ -1446,7 +1451,7 @@ def comprobarDatosInicio_MediaMuestral():
 
     for i in range(len(datosString_MediaMuestral)):
         if(datosString_MediaMuestral[i] == ',' and datosString_MediaMuestral[i + 1] == ','):
-            messagebox.showerror("ERROR", "INGRESASTE [,] SEGUIDAS")
+            messagebox.showerror("ERROR", "You entered [,] in a row")
             return
 
     global tamanioInt_MediaMuestral
@@ -1469,7 +1474,7 @@ def comprobarDatosInicio_MediaMuestral():
                 entero = int(numero)
                 datosInt_MediaMuestral.append(entero)
             except ValueError:
-                messagebox.showerror("ERROR", "DEBES INGRESAR NUMEROS")
+                messagebox.showerror("ERROR", "You must enter numbers")
                 j = len(datosString_MediaMuestral)
                 return
 
@@ -1479,12 +1484,12 @@ def comprobarDatosInicio_MediaMuestral():
 
     if(tamanioInt_MediaMuestral > len(datosInt_MediaMuestral)):
         messagebox.showerror(
-            "ERROR", "El tamaño de la muestra no puede ser mayor a la muestra")
+            "ERROR", "The sample size cannot be larger than the sample")
         return
 
     if(tamanioInt_MediaMuestral <= 0):
         messagebox.showerror(
-            "ERROR", "No se puede tener una muestra 0 o menor")
+            "ERROR", "You cannot have a sample of 0 or less")
         return
 
     crearVentana_MediaMuestral()
@@ -1535,7 +1540,7 @@ def crearVentana_MediaMuestral():
     )
 
     tablaResultado.insert(
-        END, "\n\n(: Desarrollado con amor por Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
+        END, "\n\n(: Developed with love by Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
 
     tablaResultado.config(yscrollcommand=scrollVert.set, state="disabled")
 
@@ -1548,10 +1553,10 @@ def transformarStringAEntero(valor):
     except ValueError:
         try:
             float(valor)
-            messagebox.showinfo("FUNCIONALIDAD NO IMPLEMENTADA",
+            messagebox.showinfo("FUNCTIONALITY NOT IMPLEMENTED",
                                 "Solo se trabaja con números enteros :(")
         except ValueError:
-            messagebox.showerror("ERROR", "Debes ingresar números")
+            messagebox.showerror("ERROR", "You must enter numbers")
         else:
             return
     else:
@@ -1575,17 +1580,17 @@ def comprobarDatosInicio_Correlacion():
 
     if(numDatosX != numDatosY):
         messagebox.showerror(
-            "ERROR", "(X) y (Y) deben tener la misma cantidad de datos")
+            "ERROR", "(X) and (Y) must have the same amount of data")
         return
 
     for i in range(len(datosString_X_Correlacion)):
         if(datosString_X_Correlacion[i] == ',' and datosString_X_Correlacion[i + 1] == ','):
-            messagebox.showerror("ERROR", "INGRESASTE [,] SEGUIDAS en (X)")
+            messagebox.showerror("ERROR", "You entered [,] in a row en (X)")
             return
 
     for i in range(len(datosString_Y_Correlacion)):
         if(datosString_Y_Correlacion[i] == ',' and datosString_Y_Correlacion[i + 1] == ','):
-            messagebox.showerror("ERROR", "INGRESASTE [,] SEGUIDAS en (Y)")
+            messagebox.showerror("ERROR", "You entered [,] in a row en (Y)")
             return
 
     j = 0
@@ -1607,7 +1612,7 @@ def comprobarDatosInicio_Correlacion():
                 entero = int(numeroX)
                 datosInt_X_Correlacion.append(entero)
             except ValueError:
-                messagebox.showerror("ERROR", "DEBES INGRESAR NUMEROS")
+                messagebox.showerror("ERROR", "You must enter numbers")
                 j = len(datosString_X_Correlacion)
                 return
 
@@ -1624,7 +1629,7 @@ def comprobarDatosInicio_Correlacion():
                 entero = int(numeroY)
                 datosInt_Y_Correlacion.append(entero)
             except ValueError:
-                messagebox.showerror("ERROR", "DEBES INGRESAR NUMEROS")
+                messagebox.showerror("ERROR", "You must enter numbers")
                 k = len(datosString_Y_Correlacion)
                 return
 
@@ -1686,14 +1691,14 @@ def crearVentana_Correlacion():
         len(datosInt_X_Correlacion))
 
     tablaResultado.insert(
-        END, f"\n\nDesviación estándar de X es: {round((matriz[len(datosInt_X_Correlacion)][5] / (len(datosInt_X_Correlacion) - 1))**0.5, 5)}")
+        END, f"\n\nStandard Deviation of X is: {round((matriz[len(datosInt_X_Correlacion)][5] / (len(datosInt_X_Correlacion) - 1))**0.5, 5)}")
     tablaResultado.insert(
-        END, f"\nDesviación estándar de Y es: {round((matriz[len(datosInt_Y_Correlacion)][6] / (len(datosInt_Y_Correlacion) - 1))**0.5, 5)}")
+        END, f"\nStandard Deviation of Y is: {round((matriz[len(datosInt_Y_Correlacion)][6] / (len(datosInt_Y_Correlacion) - 1))**0.5, 5)}")
     tablaResultado.insert(
-        END, f"\n\nEl coeficiente de correlación (r) es: {r}")
+        END, f"\n\nThe correlation coefficient (r) is: {r}")
 
     tablaResultado.insert(
-        END, "\n\n(: Desarrollado con amor por Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
+        END, "\n\n(: Developed with love by Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
 
     tablaResultado.config(yscrollcommand=scrollVert.set, state="disabled")
 
@@ -1710,58 +1715,190 @@ def run():
     p4 = Frame(bloqueP)
     p5 = Frame(bloqueP)
 
-    bloqueP.add(p1, text="Inicio")
-    bloqueP.add(p2, text="Datos No Agrupados")
-    bloqueP.add(p3, text="Datos Agrupados")
-    bloqueP.add(p4, text="Distribución Media Muestral")
-    bloqueP.add(p5, text="Coeficiente de Correlación")
+    bloqueP.add(p1, text="Start")
+    bloqueP.add(p2, text="Ungrouped Data")
+    bloqueP.add(p3, text="Grouped Data")
+    bloqueP.add(p4, text="Sampling Distribution of the Mean")
+    bloqueP.add(p5, text="Correlation Coefficient")
 
     bloqueP.pack()
 
     #========================================PESTAÑA PRINCIPAL================================================#
-    #lineas separadoras
 
-    canvas = Canvas(p1)
-    canvas.create_line(0, 162, 1800, 162, width=2)
-    canvas.create_line(0, 2, 1800, 2, width=3)
-    canvas.create_line(0, 250, 1800, 250, width=2)
-    canvas.create_line(0, 361, 1800, 361, width=2)
+    # textos de las medidas
+    Label(
+        p1,
+        text="Descriptive Measures",
+        width=20,
+        font="Helvetica 16 bold"
+    ).grid(row=0,
+           column=0,
+           columnspan=11,
+           sticky=S+N+E+W,
+           pady=14)
+    Label(
+        p1,
+        text="Ungrouped\nData",
+        width=12,
+        font="Helvetica 10 bold"
+    ).grid(row=4,
+           column=0,
+           padx=0,
+           sticky=S+N+E+W)
+    Label(
+        p1,
+        text="Grouped\nData",
+        width=12,
+        font="Helvetica 10 bold"
+    ).grid(row=4,
+           column=10,
+           padx=0,
+           sticky=S+N+E+W)
 
+    Label(
+        p1,
+        text="Arithmetic Average",
+        font="Helvetica 9 bold",
+        fg="green3"
+    ).grid(row=1,
+           column=3,
+           sticky=S+N+E+W,
+           pady=6)
+    Label(
+        p1,
+        text="Median",
+        font="Helvetica 9 bold",
+        fg="green3"
+    ).grid(row=1,
+           column=5,
+           sticky=S+N+E+W,
+           pady=6)
+    Label(
+        p1,
+        text="Mode",
+        font="Helvetica 9 bold",
+        fg="green3"
+    ).grid(row=1,
+           column=7,
+           sticky=S+N+E+W,
+           pady=6)
 
+    Label(
+        p1,
+        text="Range",
+        font="Helvetica 9 bold",
+        fg="OrangeRed2"
+    ).grid(row=2,
+           column=2,
+           sticky=S+N+E+W,
+           pady=6)
+    Label(
+        p1,
+        text="Variance",
+        font="Helvetica 9 bold",
+        fg="OrangeRed2"
+    ).grid(row=2,
+           column=4,
+           sticky=S+N+E+W,
+           pady=6)
+    Label(
+        p1,
+        text="Standard Deviation",
+        font="Helvetica 9 bold",
+        fg="OrangeRed2"
+    ).grid(row=2,
+           column=6,
+           sticky=S+N+E+W,
+           pady=6)
+    Label(
+        p1,
+        text="Mean Deviation",
+        font="Helvetica 9 bold",
+        fg="OrangeRed2"
+    ).grid(row=2,
+           column=8,
+           sticky=S+N+E+W,
+           pady=6)
 
-    #textos de las medidas
-    Label(p1, text ="Medidas descriptivas ", font = "Helvetica 16 bold").place(x=278,y=6)
-    Label(p1, text ="Datos no agrupados ", font = "Helvetica 8 bold").place(x=10,y=140)
-    Label(p1, text ="Datos  agrupados ", font = "Helvetica 8 bold").place(x=685,y=140)
+    Label(
+        p1,
+        text="Quartile",
+        font="Helvetica 9 bold",
+        fg="blue"
+    ).grid(row=3,
+           column=1,
+           sticky=S+N+E+W,
+           pady=6)
+    Label(
+        p1,
+        text="Decile",
+        font="Helvetica 9 bold",
+        fg="blue"
+    ).grid(row=3,
+           column=3,
+           sticky=S+N+E+W,
+           pady=6)
+    Label(
+        p1,
+        text="Percentile",
+        font="Helvetica 9 bold",
+        fg="blue"
+    ).grid(row=3,
+           column=5,
+           sticky=S+N+E+W,
+           pady=6)
+    Label(
+        p1,
+        text="Bias",
+        font="Helvetica 9 bold",
+        fg="blue"
+    ).grid(row=3,
+           column=7,
+           sticky=S+N+E+W,
+           pady=6)
+    Label(
+        p1,
+        text="Kurtosis",
+        font="Helvetica 9 bold",
+        fg="blue"
+    ).grid(row=3,
+           column=9,
+           sticky=S+N+E+W,
+           pady=6)
 
+    # textos recuadro 2
+    Label(
+        p1,
+        text="Sampling Distribution of the Mean",
+        font="Helvetica 16 bold"
+    ).grid(row=5,
+           column=0,
+           columnspan=11,
+           sticky=S+N+E+W,
+           pady=30)
 
-    Label(p1, text ="Media ", font = "Helvetica 8 bold",fg ="green3").place(x=290,y=40)
-    Label(p1, text ="Mediana ", font = "Helvetica 8 bold",fg ="green3").place(x=380,y=40)
-    Label(p1, text ="Moda ", font = "Helvetica 8 bold",fg ="green3").place(x=480,y=40)
+    # textos recuadro 3
+    Label(
+        p1,
+        text="Correlation Coefficient",
+        font="Helvetica 16 bold"
+    ).grid(row=6,
+           column=0,
+           columnspan=11,
+           sticky=S+N+E+W,
+           pady=20)
 
-    Label(p1, text ="Rango ", font = "Helvetica 8 bold",fg ="OrangeRed2").place(x=200,y=80)
-    Label(p1, text ="Varianza ", font = "Helvetica 8 bold",fg ="OrangeRed2").place(x=290,y=80)
-    Label(p1, text ="Desviación estandar ", font = "Helvetica 8 bold",fg ="OrangeRed2").place(x=380,y=80)
-    Label(p1, text ="Desviación media" , font = "Helvetica 8 bold",fg ="OrangeRed2").place(x=530,y=80)
-
-    Label(p1, text ="Cuartiles ", font = "Helvetica 8 bold",fg ="blue").place(x=150,y=120)
-    Label(p1, text ="Deciles ", font = "Helvetica 8 bold",fg ="blue").place(x=260,y=120)
-    Label(p1, text ="Percentiles ", font = "Helvetica 8 bold",fg ="blue").place(x=370,y=120)
-    Label(p1, text ="Sesgo ", font = "Helvetica 8 bold",fg ="blue").place(x=500,y=120)
-    Label(p1, text ="Curtosis   ", font = "Helvetica 8 bold",fg ="blue").place(x=610,y=120)
-
-
-
-    #textos recuadro 2
-    Label(p1, text ="Distribución Muestral de la Media ", font = "Helvetica 16 bold").place(x=214,y=165)
-
-
-    #textos recuadro 3
-    Label(p1, text ="Coeficiente de Correlación", font = "Helvetica 16 bold").place(x=260,y=253)
-
-    #nombres
-    Label(p1, text ="Desarrollado por Fernando Novillo & Edison Azogue", font = "Helvetica 7 bold").place(x=5,y=330)
-
+    # nombres
+    Label(
+        p1,
+        text="Developed with love by Fernando Novillo & Edison Azogue\t\t\t<3",
+        font="Helvetica 9 bold"
+    ).grid(
+        row=7,
+        column=0,
+        columnspan=11,
+        sticky=W
+    )
 
     #====================================CREAR PESTAÑAS DENTRO DE DATOS NO AGRUPADOS=====================================#
 
@@ -1770,8 +1907,8 @@ def run():
     a1 = Frame(bloqueAgrupados)
     a2 = Frame(bloqueAgrupados)
 
-    bloqueAgrupados.add(a1, text="LISTADOS")
-    bloqueAgrupados.add(a2, text="EN TABLA")
+    bloqueAgrupados.add(a1, text="LISTED")
+    bloqueAgrupados.add(a2, text="IN TABLE")
     bloqueAgrupados.pack()
 
     #===================================CREACION DE FRAMES DATOS NO AGRUPADOS ENlISTADOS==================================#
@@ -1820,7 +1957,7 @@ def run():
 
     Label(
         frameSuperiorEnlistadosEnlistados_DatosNoAgrupados,
-        text="CALCULADORA ESTADISTICA DE DATOS NO AGRUPADOS",
+        text="STATISTICAL CALCULATOR OF UNGROUPED DATA\nFOR LISTED DATA",
         padx=10,
         pady=10,
         font=("Comic Sans MS", 20)
@@ -1830,7 +1967,7 @@ def run():
 
     Label(
         frameSuperiorEnlistadosEnlistados_DatosNoAgrupados,
-        text="PARA DATOS ENLISTADOS\nIngresa los datos separados solo por [,]",
+        text="Enter the data separated only by [,]",
         width=60,
         anchor="n",
         font=("Kristen ITC", 11)
@@ -1842,7 +1979,7 @@ def run():
 
     Label(
         frameSuperiorTabla_DatosNoAgrupados,
-        text="CALCULADORA ESTADISTICA DE DATOS NO AGRUPADOS",
+        text="STATISTICAL CALCULATOR OF UNGROUPED DATA\nFOR DATA IN TABLE",
         padx=10,
         pady=10,
         font=("Comic Sans MS", 20)
@@ -1853,19 +1990,7 @@ def run():
 
     Label(
         frameSuperiorTabla_DatosNoAgrupados,
-        text="PARA DATOS EN TABLA",
-        width=60,
-        anchor="n",
-        font=("Kristen ITC", 11)
-    ).grid(
-        row=1,
-        column=0,
-        pady=10,
-        columnspan=2)
-
-    Label(
-        frameSuperiorTabla_DatosNoAgrupados,
-        text="Número de valores distintos",
+        text="Enter the total of distinct values\nfrom the frequency table",
         width=25,
         anchor="n",
         font=("Kristen ITC", 11)
@@ -1878,7 +2003,7 @@ def run():
 
     Label(
         frameSuperior_DatosAgrupados,
-        text="CALCULADORA ESTADISTICA DE DATOS AGRUPADOS",
+        text="STATISTICAL CALCULATOR FOR GROUPED DATA",
         padx=10,
         pady=10,
         font=("Comic Sans MS", 20)
@@ -1889,7 +2014,7 @@ def run():
 
     Label(
         frameSuperior_DatosAgrupados,
-        text="Límite Inferior (Clase 1)",
+        text="Lower Limit (Class 1)",
         width=25,
         anchor="n",
         font=("Kristen ITC", 11)
@@ -1899,7 +2024,7 @@ def run():
 
     Label(
         frameSuperior_DatosAgrupados,
-        text="Límite Superior (Clase 1)",
+        text="Upper Limit (Class 1)",
         width=25,
         anchor="n",
         font=("Kristen ITC", 11)
@@ -1909,7 +2034,7 @@ def run():
 
     Label(
         frameSuperior_DatosAgrupados,
-        text="Número de clases",
+        text="Number of Classes",
         width=25,
         anchor="n",
         font=("Kristen ITC", 11)
@@ -1921,7 +2046,7 @@ def run():
 
     Label(
         frameSuperior_MediaMuestral,
-        text="CALCULADORA DISTRIBUCION MUESTRAL DE LA MEDIA",
+        text="CALCULATOR SAMPLING DISTRIBUTION OF THE MEAN",
         padx=10,
         pady=10,
         font=("Comic Sans MS", 20)
@@ -1931,7 +2056,7 @@ def run():
 
     Label(
         frameSuperior_MediaMuestral,
-        text="Ingresa los datos de la muestra separados solo por [,]",
+        text="Enter the sample data separated only by [,]",
         width=60,
         anchor="n",
         font=("Kristen ITC", 11)
@@ -1941,7 +2066,7 @@ def run():
 
     Label(
         frameSuperior_MediaMuestral,
-        text="Ingresa el tamaño de la muestra",
+        text="Enter the sample size you require",
         width=60,
         anchor="n",
         font=("Kristen ITC", 11)
@@ -1953,7 +2078,7 @@ def run():
 
     Label(
         frameSuperior_Correlacion,
-        text="CALCULADORA COEFICIENTE DE CORRELACION",
+        text="CORRELATION COEFFICIENT CALCULATOR",
         padx=10,
         pady=10,
         font=("Comic Sans MS", 20)
@@ -1964,7 +2089,7 @@ def run():
 
     Label(
         frameSuperior_Correlacion,
-        text="Ingresa los datos de la variable (X) separados por [,]",
+        text="Enter the variable data (X)\nseparated by [,]",
         width=40,
         anchor="n",
         font=("Kristen ITC", 11)
@@ -1974,7 +2099,7 @@ def run():
 
     Label(
         frameSuperior_Correlacion,
-        text="Ingresa los datos de la variable (Y) separados por [,]",
+        text="Enter the variable data (Y)\nseparated by [,]",
         width=40,
         anchor="n",
         font=("Kristen ITC", 11)
@@ -2130,11 +2255,12 @@ def run():
 
     Button(
         frameSuperiorEnlistadosEnlistados_DatosNoAgrupados,
-        text="CONFIRMAR DATOS",
+        text="Confirm Data",
         command=lambda: comprobarDatosInicioEnlistados_DatosNoAgrupados(),
         activebackground="#e8ca1e",
-        relief="ridge",
-        bd=3
+        relief="raise",
+        bd=3,
+        font=("Berlin Sans FB", 12)
     ).grid(
         row=3,
         column=0,
@@ -2144,22 +2270,24 @@ def run():
     global botonConfirmarCalculosEnlistados_DatosNoAgrupados
     botonConfirmarCalculosEnlistados_DatosNoAgrupados = Button(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="CALCULAR",
+        text="Calculate",
         activebackground="#e8ca1e",
         command=lambda: revisarBotonesMedidasEnlistados_DatosNoAgrupados(),
-        relief="ridge",
-        bd=3
+        relief="raise",
+        bd=3,
+        font=("Berlin Sans FB", 12)
     )
 
     #========================================BOTONES DATOS NO AGRUPADOS EN TABLA=======================================#
 
     Button(
         frameSuperiorTabla_DatosNoAgrupados,
-        text="CONFIRMAR DATOS",
+        text="Confirm Data",
         command=lambda: comprobarDatosInicioTabla_DatosNoAgrupados(),
         activebackground="#e8ca1e",
-        relief="ridge",
-        bd=3
+        relief="raise",
+        bd=3,
+        font=("Berlin Sans FB", 12)
     ).grid(
         row=4,
         column=0,
@@ -2169,32 +2297,35 @@ def run():
     global botonLlenarTabla_DatosNoAgrupados
     botonLlenarTabla_DatosNoAgrupados = Button(
         frameTablaA2_DatosNoAgrupados,
-        text="CONFIRMAR FRECUENCIAS",
+        text="Confirm Frequencies",
         command=lambda: comprobarDatosTabla_DatosNoAgrupados(),
         activebackground="#e8ca1e",
-        relief="ridge",
-        bd=3
+        relief="raise",
+        bd=3,
+        font=("Berlin Sans FB", 12)
     )
 
     global botonConfirmarCalculosTabla_DatosNoAgrupados
     botonConfirmarCalculosTabla_DatosNoAgrupados = Button(
         frameTablaA2_DatosNoAgrupados,
-        text="CALCULAR",
+        text="Calculate",
         activebackground="#e8ca1e",
         command=lambda: revisarBotonesMedidasTabla_DatosNoAgrupados(),
-        relief="ridge",
-        bd=3
+        relief="raise",
+        bd=3,
+        font=("Berlin Sans FB", 12)
     )
 
     #========================================BOTONES MEDIA MUESTRAL=======================================#
 
     Button(
         frameSuperior_MediaMuestral,
-        text="CALCULAR",
+        text="Calculate",
         command=lambda: comprobarDatosInicio_MediaMuestral(),
         activebackground="#e8ca1e",
-        relief="ridge",
-        bd=3
+        relief="raise",
+        bd=3,
+        font=("Berlin Sans FB", 12)
     ).grid(
         row=5,
         column=0,
@@ -2205,11 +2336,12 @@ def run():
 
     Button(
         frameSuperior_Correlacion,
-        text="CALCULAR",
+        text="Calculate",
         command=lambda: comprobarDatosInicio_Correlacion(),
         activebackground="#e8ca1e",
-        relief="ridge",
-        bd=3
+        relief="raise",
+        bd=3,
+        font=("Berlin Sans FB", 12)
     ).grid(
         row=3,
         pady=5,
@@ -2222,7 +2354,7 @@ def run():
     global botonSeleccionarMediaEnlistados_DatosNoAgrupados
     botonSeleccionarMediaEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Media",
+        text="Arithmetic Average",
         variable=boolMediaEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2231,7 +2363,7 @@ def run():
     global botonSeleccionarMedianaEnlistados_DatosNoAgrupados
     botonSeleccionarMedianaEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Mediana",
+        text="Median",
         variable=boolMedianaEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2240,7 +2372,7 @@ def run():
     global botonSeleccionarModaEnlistados_DatosNoAgrupados
     botonSeleccionarModaEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Moda",
+        text="Mode",
         variable=boolModaEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2249,7 +2381,7 @@ def run():
     global botonSeleccionarRangoEnlistados_DatosNoAgrupados
     botonSeleccionarRangoEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Rango",
+        text="Range",
         variable=boolRangoEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2258,7 +2390,7 @@ def run():
     global botonSeleccionarDesviacionMediaEnlistados_DatosNoAgrupados
     botonSeleccionarDesviacionMediaEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Desviacion Media",
+        text="Mean Deviation",
         variable=boolDesviacionMediaEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2267,7 +2399,7 @@ def run():
     global botonSeleccionarVarianzaEnlistados_DatosNoAgrupados
     botonSeleccionarVarianzaEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Varianza",
+        text="Variance",
         variable=boolVarianzaEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2276,7 +2408,7 @@ def run():
     global botonSeleccionarDesviacionEstandarEnlistados_DatosNoAgrupados
     botonSeleccionarDesviacionEstandarEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Desviacion Estandar",
+        text="Standard Deviation",
         variable=boolDesviacionEstandarEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2285,7 +2417,7 @@ def run():
     global botonSeleccionarSesgoEnlistados_DatosNoAgrupados
     botonSeleccionarSesgoEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Sesgo",
+        text="Bias",
         variable=boolSesgoEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2294,7 +2426,7 @@ def run():
     global botonSeleccionarCurtosisEnlistados_DatosNoAgrupados
     botonSeleccionarCurtosisEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Curtosis",
+        text="Kurtosis",
         variable=boolCurtosisEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2303,7 +2435,7 @@ def run():
     global botonSeleccionarCuartilEnlistados_DatosNoAgrupados
     botonSeleccionarCuartilEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Cuartil",
+        text="Quartile",
         variable=boolCuartilEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9),
@@ -2313,7 +2445,7 @@ def run():
     global botonSeleccionarDecilEnlistados_DatosNoAgrupados
     botonSeleccionarDecilEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Decil",
+        text="Decile",
         variable=boolDecilEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9),
@@ -2323,7 +2455,7 @@ def run():
     global botonSeleccionarPercentilEnlistados_DatosNoAgrupados
     botonSeleccionarPercentilEnlistados_DatosNoAgrupados = Checkbutton(
         frameTablaA1Enlistados_DatosNoAgrupados,
-        text="Percentil",
+        text="Percentile",
         variable=boolPercentilEnlistados_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9),
@@ -2335,7 +2467,7 @@ def run():
     global botonSeleccionarMediaTabla_DatosNoAgrupados
     botonSeleccionarMediaTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Media",
+        text="Arithmetic Average",
         variable=boolMediaTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2344,7 +2476,7 @@ def run():
     global botonSeleccionarMedianaTabla_DatosNoAgrupados
     botonSeleccionarMedianaTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Mediana",
+        text="Median",
         variable=boolMedianaTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2353,7 +2485,7 @@ def run():
     global botonSeleccionarModaTabla_DatosNoAgrupados
     botonSeleccionarModaTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Moda",
+        text="Mode",
         variable=boolModaTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2362,7 +2494,7 @@ def run():
     global botonSeleccionarRangoTabla_DatosNoAgrupados
     botonSeleccionarRangoTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Rango",
+        text="Range",
         variable=boolRangoTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2371,7 +2503,7 @@ def run():
     global botonSeleccionarDesviacionMediaTabla_DatosNoAgrupados
     botonSeleccionarDesviacionMediaTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Desviacion Media",
+        text="Mean Deviation",
         variable=boolDesviacionMediaTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2380,7 +2512,7 @@ def run():
     global botonSeleccionarVarianzaTabla_DatosNoAgrupados
     botonSeleccionarVarianzaTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Varianza",
+        text="Variance",
         variable=boolVarianzaTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2389,7 +2521,7 @@ def run():
     global botonSeleccionarDesviacionEstandarTabla_DatosNoAgrupados
     botonSeleccionarDesviacionEstandarTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Desviacion Estandar",
+        text="Standard Deviation",
         variable=boolDesviacionEstandarTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2398,7 +2530,7 @@ def run():
     global botonSeleccionarSesgoTabla_DatosNoAgrupados
     botonSeleccionarSesgoTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Sesgo",
+        text="Bias",
         variable=boolSesgoTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2407,7 +2539,7 @@ def run():
     global botonSeleccionarCurtosisTabla_DatosNoAgrupados
     botonSeleccionarCurtosisTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Curtosis",
+        text="Kurtosis",
         variable=boolCurtosisTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2416,7 +2548,7 @@ def run():
     global botonSeleccionarCuartilTabla_DatosNoAgrupados
     botonSeleccionarCuartilTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Cuartil",
+        text="Quartile",
         variable=boolCuartilTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9),
@@ -2426,7 +2558,7 @@ def run():
     global botonSeleccionarDecilTabla_DatosNoAgrupados
     botonSeleccionarDecilTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Decil",
+        text="Decile",
         variable=boolDecilTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9),
@@ -2436,7 +2568,7 @@ def run():
     global botonSeleccionarPercentilTabla_DatosNoAgrupados
     botonSeleccionarPercentilTabla_DatosNoAgrupados = Checkbutton(
         frameTablaA2_DatosNoAgrupados,
-        text="Percentil",
+        text="Percentile",
         variable=boolPercentilTabla_DatosNoAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9),
@@ -2447,12 +2579,13 @@ def run():
 
     Button(
         frameSuperior_DatosAgrupados,
-        text="ACTUALIZAR CLASES",
+        text="Create Classes",
         command=lambda: comprobarDatosInicio_DatosAgrupados(
             inicioLI_DatosAgrupados.get(), iniciolS_DatosAgrupados.get()),
         activebackground="#e8ca1e",
-        relief="ridge",
-        bd=3
+        relief="raise",
+        bd=3,
+        font=("Berlin Sans FB", 12)
     ).grid(
         row=3,
         column=0,
@@ -2462,21 +2595,23 @@ def run():
     global botonLlenarTabla_DatosAgrupados
     botonLlenarTabla_DatosAgrupados = Button(
         frameTabla_DatosAgrupados,
-        text="CONFIRMAR FRECUENCIAS",
+        text="Confirm Frequencies",
         command=lambda: comprobarDatosFrecuencia(1),
         activebackground="#e8ca1e",
-        relief="ridge",
-        bd=3
+        relief="raise",
+        bd=3,
+        font=("Berlin Sans FB", 12)
     )
 
     global botonConfirmarCalculos_DatosAgrupados
     botonConfirmarCalculos_DatosAgrupados = Button(
         frameTabla_DatosAgrupados,
-        text="CALCULAR",
+        text="Calculate",
         command=lambda: comprobarDatosFrecuencia(2),
         activebackground="#e8ca1e",
-        relief="ridge",
-        bd=3
+        relief="raise",
+        bd=3,
+        font=("Berlin Sans FB", 12)
     )
 
     # ==========================================CHECK BUTTONS DATOS AGRUPADOs=======================
@@ -2484,7 +2619,7 @@ def run():
     global botonSeleccionarMedia_DatosAgrupados
     botonSeleccionarMedia_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Media",
+        text="Arithmetic Average",
         variable=boolMedia_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2493,7 +2628,7 @@ def run():
     global botonSeleccionarMediana_DatosAgrupados
     botonSeleccionarMediana_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Mediana",
+        text="Median",
         variable=boolMediana_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2502,7 +2637,7 @@ def run():
     global botonSeleccionarModa_DatosAgrupados
     botonSeleccionarModa_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Moda",
+        text="Mode",
         variable=boolModa_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2511,7 +2646,7 @@ def run():
     global botonSeleccionarRango_DatosAgrupados
     botonSeleccionarRango_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Rango",
+        text="Range",
         variable=boolRango_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2520,7 +2655,7 @@ def run():
     global botonSeleccionarDesviacionMedia_DatosAgrupados
     botonSeleccionarDesviacionMedia_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Desviacion Media",
+        text="Mean Deviation",
         variable=boolDesviacionMedia_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2529,7 +2664,7 @@ def run():
     global botonSeleccionarVarianza_DatosAgrupados
     botonSeleccionarVarianza_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Varianza",
+        text="Variance",
         variable=boolVarianza_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2538,7 +2673,7 @@ def run():
     global botonSeleccionarDesviacionEstandar_DatosAgrupados
     botonSeleccionarDesviacionEstandar_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Desviacion Estandar",
+        text="Standard Deviation",
         variable=boolDesviacionEstandar_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2547,7 +2682,7 @@ def run():
     global botonSeleccionarSesgo_DatosAgrupados
     botonSeleccionarSesgo_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Sesgo",
+        text="Bias",
         variable=boolSesgo_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2556,7 +2691,7 @@ def run():
     global botonSeleccionarCurtosis_DatosAgrupados
     botonSeleccionarCurtosis_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Curtosis",
+        text="Kurtosis",
         variable=boolCurtosis_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9)
@@ -2565,7 +2700,7 @@ def run():
     global botonSeleccionarCuartil_DatosAgrupados
     botonSeleccionarCuartil_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Cuartil",
+        text="Quartile",
         variable=boolCuartil_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9),
@@ -2575,7 +2710,7 @@ def run():
     global botonSeleccionarDecil_DatosAgrupados
     botonSeleccionarDecil_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Decil",
+        text="Decile",
         variable=boolDecil_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9),
@@ -2585,7 +2720,7 @@ def run():
     global botonSeleccionarPercentil_DatosAgrupados
     botonSeleccionarPercentil_DatosAgrupados = Checkbutton(
         frameTabla_DatosAgrupados,
-        text="Percentil",
+        text="Percentile",
         variable=boolPercentil_DatosAgrupados,
         cursor="heart",
         font=("Kristen ITC", 9),

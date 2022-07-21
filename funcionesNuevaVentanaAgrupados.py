@@ -35,7 +35,7 @@ def mostrarResultadosDA(num, matriz):
     imprimir[num][3] = ''
 
     return(tabulate(imprimir, headers=[
-        'Intervalo', 'fi', 'Fi', 'Marca de clase'], tablefmt="grid", numalign="center", stralign="center"))
+        'Interval', 'fi', 'Fi', 'Class Mark'], tablefmt="grid", numalign="center", stralign="center"))
 
 
 def unificarDA(lI, lS, fI, fAc, mC, num):

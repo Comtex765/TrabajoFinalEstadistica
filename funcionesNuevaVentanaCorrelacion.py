@@ -18,8 +18,8 @@ def mostrarResultadosCorrelacion(matriz):
     
     return(tabulate(
         matriz,
-        headers=['N', 'X', 'Y', 'X - media(X)', 'Y - media(Y)', '(X - media(X))^2',
-                 '(Y - media(Y))^2', '(X - media(X))(Y - media(Y))'],
+        headers=['N', 'X', 'Y', 'X - mean(X)', 'Y - mean(Y)', '(X - mean(X))^2',
+                 '(Y - mean(Y))^2', '(X - mean(X))(Y - mean(Y))'],
         tablefmt="grid",
         numalign="center",
         stralign="center")

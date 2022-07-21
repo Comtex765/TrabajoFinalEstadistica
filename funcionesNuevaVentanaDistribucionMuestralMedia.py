@@ -17,7 +17,7 @@ def crearMatriz(filas, columnas):
 
 def mostrarResultadosMuestral(matriz):
     return(tabulate(matriz, headers=[
-        'Combinaciones', 'Media Muestral', 'Número de Medias', 'Probabilidad'], tablefmt="grid", numalign="center", stralign="center"))
+        'Combinations', 'Sample Mean', 'Num of Means', 'Probability'], tablefmt="grid", numalign="center", stralign="center"))
 
 
 def calcularMuestraMedia(datos, t):

@@ -15,7 +15,7 @@ def crearMatriz(filas, columnas):
 
 def mostrarResultadosNA(matriz):
     return(tabulate(matriz, headers=[
-        'Valor', 'fi', 'FI', 'hI', 'HI'], tablefmt="grid", numalign="center", stralign="center"))
+        'Value', 'fi', 'FI', 'hI', 'HI'], tablefmt="grid", numalign="center", stralign="center"))
 
 
 def unificarNA(datos):
