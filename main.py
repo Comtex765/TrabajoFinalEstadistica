@@ -16,7 +16,7 @@ from funcionesNuevaVentanaCorrelacion import *
 #==============================================GLOBAL VENTANA==================================#
 global raizVentana
 raizVentana = Tk()
-raizVentana.title("ESTADISTICA")
+raizVentana.title("Statistical Program")
 
 # ================================VARIABLES GLOBALES DATOS AGRUPADOS====================================#
 # Asigna el valor del limite inferior al primer elemento del arreglo lI_DatosAgrupados
@@ -1888,13 +1888,24 @@ def run():
            sticky=S+N+E+W,
            pady=20)
 
+    # textos recuadro 3
+    Label(
+        p1,
+        text="Select the calculator in the upper tabs as needed",
+        font="Helvetica 16"
+    ).grid(row=7,
+           column=0,
+           columnspan=11,
+           sticky=S+N+E+W,
+           pady=20)
+
     # nombres
     Label(
         p1,
         text="Developed with love by Fernando Novillo & Edison Azogue\t\t\t<3",
         font="Helvetica 9 bold"
     ).grid(
-        row=7,
+        row=8,
         column=0,
         columnspan=11,
         sticky=W
