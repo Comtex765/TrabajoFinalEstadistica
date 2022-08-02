@@ -1,3 +1,4 @@
+from pydoc import visiblename
 from tkinter import *
 from tkinter import messagebox
 from tkinter.ttk import Notebook
@@ -668,7 +669,7 @@ def crearVentana_DatosAgrupados(texto):
     num = transformarStringAEntero(numClases_DatosAgrupados.get())
     ventanaNueva = Toplevel()
 
-    ventanaNueva.title("Tabla de Frecuencias")
+    ventanaNueva.title("Grouped Data Results")
 
     frameNuevaVentana = Frame(ventanaNueva)
 
@@ -690,7 +691,6 @@ def crearVentana_DatosAgrupados(texto):
     tablaResultado.insert(
         'end', mostrarResultadosDA(num, matriz), 'tag-center')
 
-    tablaResultado.insert(END, "\n\n\n")
     tablaResultado.insert(END, texto)
 
     tablaResultado.grid(
@@ -710,9 +710,6 @@ def crearVentana_DatosAgrupados(texto):
         column=1,
         sticky="nsew"
     )
-
-    tablaResultado.insert(
-        END, "\n\n(: Developed with love by Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
 
     tablaResultado.config(yscrollcommand=scrollVert.set, state="disabled")
 
@@ -983,6 +980,7 @@ def crearVentanaEnlistados_DatosNoAgrupados(texto):
     #==================================CREACION VENTANA=====================================#
     ventanaNueva = Toplevel()
 
+    ventanaNueva.title("Ungrouped Data Results LIsted")
     frameNuevaVentana = Frame(ventanaNueva)
 
     frameNuevaVentana.grab_set()
@@ -1002,7 +1000,6 @@ def crearVentanaEnlistados_DatosNoAgrupados(texto):
         'tag-center', justify='center')
     tablaResultado.insert('end', mostrarResultadosNA(matriz), 'tag-center')
 
-    tablaResultado.insert(END, "\n\n\n")
     tablaResultado.insert(END, texto)
 
     tablaResultado.grid(
@@ -1022,9 +1019,6 @@ def crearVentanaEnlistados_DatosNoAgrupados(texto):
         column=1,
         sticky="nsew"
     )
-
-    tablaResultado.insert(
-        END, "\n\n(: Developed with love by Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
 
     tablaResultado.config(
         yscrollcommand=scrollVert.set, state="disabled")
@@ -1400,6 +1394,7 @@ def crearVentanaTabla_DatosNoAgrupados(texto):
 
     frameNuevaVentana = Frame(ventanaNueva)
 
+    ventanaNueva.title("Ungrouped Data Results in Table")
     frameNuevaVentana.grab_set()
     frameNuevaVentana.focus_set()
 
@@ -1416,7 +1411,6 @@ def crearVentanaTabla_DatosNoAgrupados(texto):
     tablaResultado.tag_configure('tag-center', justify='center')
     tablaResultado.insert('end', mostrarResultadosNA(matriz), 'tag-center')
 
-    tablaResultado.insert(END, "\n\n\n")
     tablaResultado.insert(END, texto)
 
     tablaResultado.grid(
@@ -1436,9 +1430,6 @@ def crearVentanaTabla_DatosNoAgrupados(texto):
         column=1,
         sticky="nsew"
     )
-
-    tablaResultado.insert(
-        END, "\n\n(: Developed with love by Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
 
     tablaResultado.config(yscrollcommand=scrollVert.set, state="disabled")
 
@@ -1501,6 +1492,7 @@ def crearVentana_MediaMuestral():
 
     frameNuevaVentana = Frame(ventanaNueva)
 
+    ventanaNueva.title("Sample Mean Results")
     frameNuevaVentana.grab_set()
     frameNuevaVentana.focus_set()
 
@@ -1519,7 +1511,6 @@ def crearVentana_MediaMuestral():
     tablaResultado.insert(
         'end', mostrarResultadosMuestral(matriz), 'tag-center')
 
-    tablaResultado.insert(END, "\n\n\n")
 
     tablaResultado.grid(
         row=0,
@@ -1538,9 +1529,6 @@ def crearVentana_MediaMuestral():
         column=1,
         sticky="nsew"
     )
-
-    tablaResultado.insert(
-        END, "\n\n(: Developed with love by Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
 
     tablaResultado.config(yscrollcommand=scrollVert.set, state="disabled")
 
@@ -1646,6 +1634,7 @@ def crearVentana_Correlacion():
 
     frameNuevaVentana = Frame(ventanaNueva)
 
+    ventanaNueva.title("Correlation Coefficient Results")
     frameNuevaVentana.grab_set()
     frameNuevaVentana.focus_set()
 
@@ -1664,7 +1653,6 @@ def crearVentana_Correlacion():
     tablaResultado.insert(
         'end', mostrarResultadosCorrelacion(matriz), 'tag-center')
 
-    tablaResultado.insert(END, "\n\n\n")
 
     tablaResultado.grid(
         row=0,
@@ -1696,9 +1684,6 @@ def crearVentana_Correlacion():
         END, f"\nStandard Deviation of Y is: {round((matriz[len(datosInt_Y_Correlacion)][6] / (len(datosInt_Y_Correlacion) - 1))**0.5, 5)}")
     tablaResultado.insert(
         END, f"\n\nThe correlation coefficient (r) is: {r}")
-
-    tablaResultado.insert(
-        END, "\n\n(: Developed with love by Fernando Novillo & Edison Azogue :) \n\t\t\t\t<3")
 
     tablaResultado.config(yscrollcommand=scrollVert.set, state="disabled")
 
@@ -1899,17 +1884,6 @@ def run():
            sticky=S+N+E+W,
            pady=20)
 
-    # nombres
-    Label(
-        p1,
-        text="Developed with love by Fernando Novillo & Edison Azogue\t\t\t<3",
-        font="Helvetica 9 bold"
-    ).grid(
-        row=8,
-        column=0,
-        columnspan=11,
-        sticky=W
-    )
 
     #====================================CREAR PESTAÑAS DENTRO DE DATOS NO AGRUPADOS=====================================#
 
@@ -2367,7 +2341,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Arithmetic Average",
         variable=boolMediaEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2376,7 +2349,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Median",
         variable=boolMedianaEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2385,7 +2357,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Mode",
         variable=boolModaEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2394,7 +2365,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Range",
         variable=boolRangoEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2403,7 +2373,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Mean Deviation",
         variable=boolDesviacionMediaEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2412,7 +2381,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Variance",
         variable=boolVarianzaEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2421,7 +2389,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Standard Deviation",
         variable=boolDesviacionEstandarEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2430,7 +2397,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Bias",
         variable=boolSesgoEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2439,7 +2405,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Kurtosis",
         variable=boolCurtosisEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2448,7 +2413,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Quartile",
         variable=boolCuartilEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoCuartilEnlistados_DatosNoAgrupados()
     )
@@ -2458,7 +2422,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Decile",
         variable=boolDecilEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoDecilEnlistados_DatosNoAgrupados()
     )
@@ -2468,7 +2431,6 @@ def run():
         frameTablaA1Enlistados_DatosNoAgrupados,
         text="Percentile",
         variable=boolPercentilEnlistados_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoPercentilEnlistados_DatosNoAgrupados()
     )
@@ -2480,7 +2442,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Arithmetic Average",
         variable=boolMediaTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2489,7 +2450,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Median",
         variable=boolMedianaTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2498,7 +2458,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Mode",
         variable=boolModaTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2507,7 +2466,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Range",
         variable=boolRangoTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2516,7 +2474,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Mean Deviation",
         variable=boolDesviacionMediaTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2525,7 +2482,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Variance",
         variable=boolVarianzaTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2534,7 +2490,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Standard Deviation",
         variable=boolDesviacionEstandarTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2543,7 +2498,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Bias",
         variable=boolSesgoTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2552,7 +2506,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Kurtosis",
         variable=boolCurtosisTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2561,7 +2514,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Quartile",
         variable=boolCuartilTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoCuartilTabla_DatosNoAgrupados()
     )
@@ -2571,7 +2523,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Decile",
         variable=boolDecilTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoDecilTabla_DatosNoAgrupados()
     )
@@ -2581,7 +2532,6 @@ def run():
         frameTablaA2_DatosNoAgrupados,
         text="Percentile",
         variable=boolPercentilTabla_DatosNoAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoPercentilTabla_DatosNoAgrupados()
     )
@@ -2632,7 +2582,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Arithmetic Average",
         variable=boolMedia_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2641,7 +2590,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Median",
         variable=boolMediana_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2650,7 +2598,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Mode",
         variable=boolModa_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2659,7 +2606,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Range",
         variable=boolRango_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2668,7 +2614,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Mean Deviation",
         variable=boolDesviacionMedia_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2677,7 +2622,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Variance",
         variable=boolVarianza_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2686,7 +2630,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Standard Deviation",
         variable=boolDesviacionEstandar_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2695,7 +2638,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Bias",
         variable=boolSesgo_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2704,7 +2646,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Kurtosis",
         variable=boolCurtosis_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9)
     )
 
@@ -2713,7 +2654,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Quartile",
         variable=boolCuartil_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoCuartil_DatosAgrupados()
     )
@@ -2723,7 +2663,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Decile",
         variable=boolDecil_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoDecil_DatosAgrupados()
     )
@@ -2733,7 +2672,6 @@ def run():
         frameTabla_DatosAgrupados,
         text="Percentile",
         variable=boolPercentil_DatosAgrupados,
-        cursor="heart",
         font=("Kristen ITC", 9),
         command=lambda: mostrarCuadroTextoPercentil_DatosAgrupados()
     )
